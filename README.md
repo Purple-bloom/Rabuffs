@@ -27,3 +27,4 @@ Regenerating
 
 Any queries that are obsolete based on combined queries above.
 
+This Fork was made to better work for an EPGP System by removing group numbers and special formatting from who has or is missing buffs. List of characters will be printed without the [Class; GX] Information
