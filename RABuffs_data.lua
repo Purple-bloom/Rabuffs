@@ -221,57 +221,19 @@ function RAB_DefaultQueryHandler(query, cmd, needraw, needtxt)
  		local ub, bb, uc, bc,ident = "","",0,0,false;
 
  		for i=1,table.getn(raw) do
-   			if (ident ~= raw[i][rawsort] and ident ~= false) then
-    			if (uc == 0) then
-     				if (bc > 1) then
-						hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. (rawsort == "group" and sRAB_BuffOutput_Group or "") .. ident .. (rawsort == "class" and "s" or "") .. " [" .. bc .. "]";
-     				else
-						hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
-     				end
-    			elseif (bc == 0) then
-     				if (uc > 1) then
-						txt = txt .. (txt ~= "" and ", " or "") .. (rawsort == "group" and sRAB_BuffOutput_Group  or "") .. ident  .. (rawsort == "class" and "s" or "") .. " [" .. uc .. "]";
-     				else
-						txt = txt .. (txt ~= "" and ", " or "") .. ub;
-     				end
-   				else
-					hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
-					txt = txt .. (txt ~= "" and ", " or "") .. ub;
-    			end
-    			ub, bb, uc, bc = "","",0,0;
- 			end
-   			
-   			ident = raw[i][rawsort];
-   			
    			if (raw[i].buffed) then
     			bc = bc + 1;
-    			bb = bb .. ((bb ~= "") and ", " or "") .. raw[i].name .. " [" .. raw[i].class .. "; G" .. raw[i].group .. "]";
+    			bb = bb .. ((bb ~= "") and ", " or "") .. raw[i].name;
    			else
     			uc = uc + 1;
-    			ub = ub .. ((ub ~= "") and ", " or "") .. raw[i].name .. " [" .. raw[i].class .. "; G" .. raw[i].group .. "]";
+    			ub = ub .. ((ub ~= "") and ", " or "") .. raw[i].name;
    			end
 		end
 		
-  		if (uc == 0) then
-   			hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. (rawsort == "group" and sRAB_BuffOutput_Group  or "") .. ident .. (rawsort == "class" and "s" or "")  .. " [" .. bc .. "]";
-  		elseif (bc == 0) then
-   			txt = txt .. (txt ~= "" and ", " or "") .. (rawsort == "group" and sRAB_BuffOutput_Group  or "") .. ident .. (rawsort == "class" and "s" or "")  .. " [" .. uc .. "]";
-  		else
-   			hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
-   			txt = txt .. (txt ~= "" and ", " or "") .. ub;
-  		end
-
-  		if (buffed == total and total > 0) then
-   			txt = string.format(sRAB_BuffOutput_EveryoneHas, RAB_Buffs[cmd].name);
-   			hastxt = txt;
-  		elseif (buffed > 0) then
-   			txt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "] " .. txt .. ".";
-   			hastxt = hashead .. " [" .. buffed .. " / " .. total .. "] " .. hastxt .. ".";
-  		else
-   			txt = string.format(sRAB_BuffOutput_EveryoneMissing, RAB_Buffs[cmd].name);
-   			hastxt = txt;
-  		end
-  		
+  		hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
+   		txt = txt .. (txt ~= "" and ", " or "") .. ub;
+		txt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "] " .. txt .. ".";
+		hastxt = hashead .. " [" .. buffed .. " / " .. total .. "] " .. hastxt .. ".";
  	else
  		txt = RAB_Buffs[cmd].name .. ": not applicable.";
  		hastxt = RAB_Buffs[cmd].name .. ": not applicable.";
