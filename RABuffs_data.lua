@@ -214,8 +214,8 @@ function RAB_DefaultQueryHandler(query, cmd, needraw, needtxt)
   		end
  	end
 
-	txthead = ((RAB_Buffs[cmd].missbuff ~= nil) and RAB_Buffs[cmd].missbuff or string.format(sRAB_BuffOutput_MissingOn, buffname)) .. ":";
-	hashead = ((RAB_Buffs[cmd].havebuff ~= nil) and RAB_Buffs[cmd].havebuff or string.format(sRAB_BuffOutput_IsOn, buffname)) .. ":";
+	txthead = ((RAB_Buffs[cmd].missbuff ~= nil) and RAB_Buffs[cmd].missbuff or string.format(sRAB_BuffOutput_MissingOn, buffname));
+	hashead = ((RAB_Buffs[cmd].havebuff ~= nil) and RAB_Buffs[cmd].havebuff or string.format(sRAB_BuffOutput_IsOn, buffname));
 
 	if (table.getn(raw) > 0) then
  		local ub, bb, uc, bc,ident = "","",0,0,false;
@@ -232,8 +232,8 @@ function RAB_DefaultQueryHandler(query, cmd, needraw, needtxt)
 		
   		hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
    		txt = txt .. (txt ~= "" and ", " or "") .. ub;
-		txt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "] " .. txt .. ".";
-		hastxt = hashead .. " [" .. buffed .. " / " .. total .. "] " .. hastxt .. ".";
+		txt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "]: " .. txt .. ".";
+		hastxt = hashead .. " [" .. buffed .. " / " .. total .. "]: " .. hastxt .. ".";
  	else
  		txt = RAB_Buffs[cmd].name .. ": not applicable.";
  		hastxt = RAB_Buffs[cmd].name .. ": not applicable.";
