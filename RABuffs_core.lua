@@ -386,7 +386,6 @@ function RAB_BuffCheckOutput(userData, outputTo, invert)
 	-- Check query, output results (Called by the /rab handler (command UI), bar clicks (visual UI)).
 	local output = (userData.groups ~= "" and userData.groups ~= "12345678") and ("[G" .. userData.groups .. "] ") or "";
 	output = output .. (userData.classes ~= "" and strlen(userData.classes) < 8 and "[" .. userData.classes .. "] " or "");
-
 	if (RAB_Buffs[userData.buffKey] ~= nil) then
 		local _, _, _, _, _, _, mtext, htext, invert2 = RAB_CallRaidBuffCheck(userData, true, true);
 		if (invert2) then

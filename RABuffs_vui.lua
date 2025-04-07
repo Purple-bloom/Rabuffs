@@ -518,6 +518,7 @@ function RABui_BarOnClick()
 		local doOut = true;
 		if (buffData.buffFunc ~= nil) then
 			doOut = not buffData.buffFunc("cast", RABui_Bars[id]);
+			RAB_BuffCheckOutput(RABui_Bars[id], "CONSOLE", IsShiftKeyDown());
 		else
 			doOut = not RAB_DefaultCastingHandler("cast", RABui_Bars[id]);
 		end
