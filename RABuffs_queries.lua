@@ -224,8 +224,10 @@ function RAB_DefaultQueryHandler(userData, needraw, needtxt)
 		local ub, bb, uc, bc, ident = "", "", 0, 0, false;
 
 		for i = 1, table.getn(raw) do
-			if (ident ~= raw[i][rawsort] and ident ~= false) then
+			if (ident ~= raw[i][rawsort] and ident ~= false and bb ~= "") then
 				hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
+				ub, bb, uc, bc = "", "", 0, 0;
+			elseif (ident ~= raw[i][rawsort] and ident ~= false and ub ~= "") then
 				txt = txt .. (txt ~= "" and ", " or "") .. ub;
 				ub, bb, uc, bc = "", "", 0, 0;
 			end
