@@ -127,28 +127,25 @@ function RAB_WeaponIsBuffed(weaponBuffs, buffData)
 	return buffed
 end
 
-function RAB_DefaultQueryHandler(userData, needraw, needtxt)
+function RAB_DefaultQueryHandler(userData)
 	local buffData = RAB_Buffs[userData.buffKey]
-	local buffed, fading, total, misc, txthead, hashead, txt, hastxt, invert, raw, rawsort, rawgroup = 0, 0, 0, "", "",
+	local buffed, fading, total, misc, txthead, hashead, hasnottxt, hastxt, invert, raidCharBuffInfoTable, rawsort = 0, 0, 0, "", "",
 	"", "", "", (buffData.invert ~= nil);
 	local buffname = buffData.name;
-	local i, u, key, val, group, isbuffed;
-	local hasSpecialFunc = buffData.sfunc ~= nil
-	local sfunc = buffData.sfunc
+	local i, u, key, val, isbuffed;
+	local unitHasBuffFunc = buffData.sfunc;
+	local hasSpecialFunc = unitHasBuffFunc ~= nil;
+	local rawgroup = sRAB_Core_GroupFormat;
 
 	if (hasSpecialFunc == false) then
 		if (buffData.type ~= "debuff") then
-			sfunc = isUnitBuffUp;
+			unitHasBuffFunc = isUnitBuffUp;
 		else
-			sfunc = isUnitDebuffUp;
+			unitHasBuffFunc = isUnitDebuffUp;
 		end
 	end
 
-	if (needraw or needtxt) then
-		raw = {};
-		rawsort = "group";
-		rawgroup = sRAB_Core_GroupFormat;
-	end
+	raidCharBuffInfoTable = {};
 
 	if buffData.useOn == 'weapon' or buffData.useOn == 'weaponOH' then
 		local buffs = RAB_CollectPlayerWeaponBuffs(buffData)
@@ -156,20 +153,19 @@ function RAB_DefaultQueryHandler(userData, needraw, needtxt)
 		total = 1
 	else
 		for i, u, group in RAB_GroupMembers(userData) do
-			local appl, fadetime, isFading = 0;
+			local fadetime, isFading;
 			if (RAB_IsEligible(u, userData)) then
 				isbuffed = false;
 
 				if hasSpecialFunc then
-					if sfunc(u) then
+					if unitHasBuffFunc(u) then
 						isbuffed = true
 					end
 				else
 					-- check all identifiers
 					for _, identifier in ipairs(buffData.identifiers) do
-						if (sfunc(u, identifier)) then
+						if (unitHasBuffFunc(u, identifier)) then
 							isbuffed = true
-							_, appl = sfunc(u, identifier);
 							break ;
 						end
 					end
@@ -178,17 +174,15 @@ function RAB_DefaultQueryHandler(userData, needraw, needtxt)
 				isFading, fadetime = RAB_ShouldRecast(u, userData.buffKey, isbuffed);
 				fading = fading + (isFading and 1 or 0);
 
-				if (needraw or needtxt) then
-					tinsert(raw,
-							{
-								unit = u,
-								name = UnitName(u) .. ((appl ~= nil and appl > 1) and " [" .. appl .. "]" or ""),
-								class = RAB_UnitClass(u),
-								group = group,
-								buffed = isbuffed,
-								fade = fadetime
-							});
-				end
+				tinsert(raidCharBuffInfoTable,
+						{
+							unit = u,
+							name = UnitName(u),
+							class = RAB_UnitClass(u),
+							group = group,
+							buffed = isbuffed,
+							fade = fadetime
+						});
 
 				if (buffData.unique == nil or (buffData.unique == true and RAB_UnitClass(u) == buffData.class)) then
 					total = total + 1;
@@ -199,68 +193,35 @@ function RAB_DefaultQueryHandler(userData, needraw, needtxt)
 		end
 	end
 
-	if (not (needraw or needtxt)) then
-		return buffed, fading, total, "";
-	end
-
-	if (total > 1 and UnitInRaid("player") and (needraw or needtxt)) then
-		if (buffData.sort == "class") then
-			rawsort = "class";
-			rawgroup = "%s";
-			table.sort(raw, function(a, b)
-				return a.class < b.class
-			end);
-		else
-			table.sort(raw, function(a, b)
-				return a.group < b.group
-			end);
-		end
-	end
+	table.sort(raidCharBuffInfoTable, function(a, b)
+	return a.group < b.group
+	end);
 
 	txthead = ((buffData.missbuff ~= nil) and buffData.missbuff or string.format(sRAB_BuffOutput_MissingOn, buffname));
 	hashead = ((buffData.havebuff ~= nil) and buffData.havebuff or string.format(sRAB_BuffOutput_IsOn, buffname));
 
-	if (table.getn(raw) > 0) then
-		local ub, bb, uc, bc, ident = "", "", 0, 0, false;
+	if (table.getn(raidCharBuffInfoTable) > 0) then
+		local  uc, bc, group = 0, 0, false;
 
-		for i = 1, table.getn(raw) do
-			if (ident ~= raw[i][rawsort] and ident ~= false and bb ~= "") then
-				hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
-				ub, bb, uc, bc = "", "", 0, 0;
-			elseif (ident ~= raw[i][rawsort] and ident ~= false and ub ~= "") then
-				txt = txt .. (txt ~= "" and ", " or "") .. ub;
-				ub, bb, uc, bc = "", "", 0, 0;
-			end
-
-			ident = raw[i][rawsort];
-
-			if (raw[i].buffed) then
+		for i = 1, table.getn(raidCharBuffInfoTable) do
+			if (raidCharBuffInfoTable[i].buffed) then
 				bc = bc + 1;
-				bb = bb ..
-						((bb ~= "") and ", " or "") .. raw[i].name;
+				hastxt = hastxt .. ((hastxt ~= "") and ", " or "") .. raidCharBuffInfoTable[i].name;
 			else
 				uc = uc + 1;
-				if(raw[i].name ~= nil) then
-					ub = ub .. ((ub ~= "") and ", " or "") .. raw[i].name;
-				end
+				hasnottxt = hasnottxt .. ((hasnottxt ~= "") and ", " or "") .. raidCharBuffInfoTable[i].name;
 			end
 		end
 
-		if (bb ~= "" ) then
-			hastxt = hastxt .. (hastxt ~= "" and ", " or "") .. bb;
-		end
-		if (ub ~= "") then
-			txt = txt .. (txt ~= "" and ", " or "") .. ub;
-		end
-		txt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "]: " .. txt;
+		hasnottxt = txthead .. " [" .. (total - buffed) .. " / " .. total .. "]: " .. hasnottxt;
 		hastxt = hashead .. " [" .. buffed .. " / " .. total .. "]: " .. hastxt;
 
 	else
-		txt = buffData.name .. ": not applicable.";
+		hasnottxt = buffData.name .. ": not applicable.";
 		hastxt = buffData.name .. ": not applicable.";
 	end
 
-	return buffed, fading, total, misc, txthead, hashead, txt, hastxt, invert, raw, rawsort, rawgroup;
+	return buffed, fading, total, misc, txthead, hashead, hasnottxt, hastxt, invert, raidCharBuffInfoTable, "group", rawgroup;
 end
 
 function RAB_QueryStatus(userData)

@@ -418,7 +418,7 @@ function RAB_CallRaidBuffCheck(userData, needraw, needtxt)
 		if RAB_Buffs[userData.buffKey].queryFunc ~= nil then
 			return RAB_Buffs[userData.buffKey].queryFunc(userData, needraw, needtxt);
 		else
-			return RAB_DefaultQueryHandler(userData, needraw, needtxt);
+			return RAB_DefaultQueryHandler(userData);
 		end
 	else
 		return 0, 0, 0, sRAB_Error_NoBuffDataBar, "", "", sRAB_Error_NoBuffData, sRAB_Error_NoBuffData;
