@@ -128,10 +128,10 @@ RAB_Buffs = {
 	hat = { name = "Admiral's Hat", identifiers = { { tooltip = "Admiral's Hat", texture = "INV_Misc_Horn_03" } }, grouping = "Miscellaneous", type = "aura" },
 
 	anyflask = { name = "Any Flask", identifiers = {
-		{ tooltip = "Supreme Power", texture = "INV_Potion_41" },
-		{ tooltip = "Distilled Wisdom", texture = "INV_Potion_97" },
-		{ tooltip = "Flask of the Titans", texture = "INV_Potion_62" },
-		{ tooltip = "Chromatic Resistance", texture = "INV_Potion_48" }
+		{ tooltip = "Supreme Power", texture = "INV_Potion_41", spellId=17628 },
+		{ tooltip = "Distilled Wisdom", texture = "INV_Potion_97", spellId=17627 },
+		{ tooltip = "Flask of the Titans", texture = "INV_Potion_62", spellId=17626 },
+		{ tooltip = "Chromatic Resistance", texture = "INV_Potion_48", spellId=17629 }
 	}, grouping = "Miscellaneous" },
 
 	-- Protection potions --
@@ -162,9 +162,13 @@ RAB_Buffs = {
 	mageblood = { name = "Mageblood Potion", identifiers = { { tooltip = "Mana Regeneration", texture = "INV_Potion_45", spellId = 24363 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 20007 },
 	titans = { name = "Flask of the Titans", identifiers = { { tooltip = "Flask of the Titans", texture = "INV_Potion_62", spellId = 17626 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 13510 },
 	wisdom = { name = "Flask of Distilled Wisdom", identifiers = { { tooltip = "Distilled Wisdom", texture = "INV_Potion_97", spellId = 17627 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 13511 },
+	chromaticres = { name = "Flask of Chromatic Resistance", identifiers = { { tooltip = "Chromatic Resistance", texture = "INV_Potion_48", spellId = 17629 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 13513 },
 	giftarthas = { name = "Gift of Arthas", identifiers = { { tooltip = "Gift of Arthas", texture = "Spell_Shadow_FingerOfDeath", spellId = 11371 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9088 },
 	frozenrune = { name = "Frozen Rune", identifiers = { { tooltip = "Fire Protection", texture = "Spell_Fire_MasterOfElements", spellId = 29432 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 22682 },
 	magicresistancepotion = { name = "Magic Resistance Potion", identifiers = { { tooltip = "Resistance", texture = "INV_Potion_08", spellId = 11364 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9036 },
+	restorativepotion = { name = "Restorative Potion", identifiers = { { tooltip = "Restoration", texture = "Spell_Holy_DispelMagic", spellId = 11359 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9030 },
+	invisibilitypotion = { name = "Invisibility Potion", identifiers = { { tooltip = "Invisibility", texture = "INV_Potion_18", spellId = 11392 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9172 },
+	lesserinvisibilitypotion = { name = "Lesser Invisibility Potion", identifiers = { { tooltip = "Lesser Invisibility", texture = "INV_Potion_18", spellId = 3680 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 3823 },
 
 	agilscroll = { name = "Scroll of Agility IV", identifiers = { { tooltip = "Agility", texture = "Spell_Holy_BlessingOfAgility", spellId = 12174 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 10309, useOn = 'player' },
 	protscroll = { name = "Scroll of Protection IV", identifiers = { { tooltip = "Armor", texture = "Ability_Warrior_DefensiveStance", spellId = 12175 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 10305, useOn = 'player' },
@@ -269,6 +273,7 @@ RAB_Buffs = {
 	blessedsunfruit = { name = "Blessed Sunfruit", identifiers = { { tooltip = "Blessed Sunfruit", texture = "Spell_Misc_Food", spellId = 18125 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 13810 },
 	blessedsunfruitjuice = { name = "Blessed Sunfruit Juice", identifiers = { { tooltip = "Blessed Sunfruit Juice", texture = "Spell_Holy_LayOnHands", spellId = 18141 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 13813 },
 	nightfinsoup = { name = "Nightfin Soup", identifiers = { { tooltip = "Mana Regeneration", texture = "Spell_Nature_ManaRegenTotem", spellId = 18194 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 13931 },
+	herbalsalad = { name = "Herbal Salad", identifiers = { { tooltip = "Increased Healing Bonus", texture = "Spell_Nature_HealingWay", spellId = 49553 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 83309 },
 	sagefish = { name = "Sagefish Delight", identifiers = { { tooltip = "Mana Regeneration", texture = "inv_misc_fish_21", spellId = 25889 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 21217 },
 	mushroomstam = { name = "Hardened Mushroom", identifiers = { { tooltip = "Increased Stamina", texture = "INV_Boots_Plate_03", spellId = 25661 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51717 },
 	mushroomstr = { name = "Power Mushroom", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 24799 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51720 },
