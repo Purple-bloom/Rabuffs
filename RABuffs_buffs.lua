@@ -193,6 +193,10 @@ RAB_Buffs = {
 
 	-- Melee Consumes --
 	giants = { name = "Elixir of Giants", identifiers = { { tooltip = "Elixir of the Giants", texture = "INV_Potion_61", spellId = 11405 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 9206 },
+	giantsPower = { name = "Giants/Power", identifiers = {
+		{ tooltip = "Elixir of the Giants", texture = "INV_Potion_61", spellId = 11405 },
+		{ tooltip = "Juju Power", texture = "INV_Misc_MonsterScales_11", spellId = 16323 }
+	}, grouping = "Melee"},
 	mongoose = { name = "Elixir of the Mongoose", identifiers = { { tooltip = "Elixir of the Mongoose", texture = "INV_Potion_32", spellId = 17538 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 13452 },
 	agilityelixir = { name = "Elixir of Agility", identifiers = { { tooltip = "Agility", texture = "INV_Potion_93", spellId = 11328 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 8949 },
 	greateragilityelixir = { name = "Elixir of Greater Agility", identifiers = { { tooltip = "Greater Agility", texture = "INV_Potion_93", spellId = 11334 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 9187 },

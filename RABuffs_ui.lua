@@ -110,7 +110,7 @@ SlashCmdList["RABUFFSQ"] = function(msg)
     end
 
     if (string.find(msg, "^(%a+) ?([1-8]*) ?([mlprdhswa]*)$") ~= nil) then
-        RAB_BuffCheckOutput(msg, target, invert);
+        RAB_BuffCheckOutput(msg, target, invert, true);
     else
         RAB_Print(sRAB_Slash_UnrecognizedQuery, "warn");
     end

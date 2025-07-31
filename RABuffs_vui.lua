@@ -318,13 +318,6 @@ function RABui_OnUpdate(elapsed)
 		end
 		RABui_NextUpdate = GetTime() + RABui_Settings.updateInterval;
 	end
-	-- local shiftstate = (IsShiftKeyDown() and 1 or 0) + (IsAltKeyDown() and 2 or 0);
-	-- if (shiftstate ~= RABui_LastShiftState) then
-	-- 	RABui_LastShiftState = shiftstate;
-	-- 	if (RABui_TooltipBar ~= nil and RABui_TooltipBar ~= 0) then
-	-- 		RABui_UpdateTooltip(RABui_TooltipBar);
-	-- 	end
-	-- end
 end
 
 function RABui_UpdateBar(barid)
@@ -449,17 +442,6 @@ function RABui_UpdateTooltip(id)
 	if (outTarget ~= "") then
 		outTarget = string.format(sRAB_Tooltip_ClickToOutput, outTarget) .. " ";
 	end
-	if ((buffData.grouping == RAB_UnitClass("player") and sRAB_SpellNames[RABui_Bars[id].buffKey] ~= nil) or buffData.buffFunc ~= nil) then
-		local tip = "";
-		if (buffData.buffFunc == nil) then
-			tip = RAB_DefaultCastingHandler("tip", RABui_Bars[id]);
-		else
-			tip = buffData.buffFunc("tip", RABui_Bars[id]);
-		end
-		if (type(tip) == "string" and tip ~= "") then
-			RAB_Tooltip:AddLine(tip);
-		end
-	end
 	if (RABui_Settings.dummymode) then
 		RAB_Tooltip:AddLine(outTarget .. shiftnote);
 	end
@@ -509,23 +491,8 @@ end
 
 function RABui_BarOnClick()
 	local id = this:GetID();
-
 	local buffData = RAB_Buffs[RABui_Bars[id].buffKey];
-
-	if (arg1 == "LeftButton" and IsControlKeyDown()) then
-		RAB_BuffCheckOutput(RABui_Bars[id], RABui_Bars[id].out ~= nil and RABui_Bars[id].out or "RAID", IsShiftKeyDown());
-	elseif (arg1 == "LeftButton" and buffData ~= nil) then
-		local doOut = true;
-		if (buffData.buffFunc ~= nil) then
-			doOut = not buffData.buffFunc("cast", RABui_Bars[id]);
-			RAB_BuffCheckOutput(RABui_Bars[id], "CONSOLE", IsShiftKeyDown());
-		else
-			doOut = not RAB_DefaultCastingHandler("cast", RABui_Bars[id]);
-		end
-		if (doOut and RABui_Settings.showsampleoutputonclick) then
-			RAB_BuffCheckOutput(RABui_Bars[id], "CONSOLE", IsShiftKeyDown());
-		end
-	end
+	RAB_BuffCheckOutput(RABui_Bars[id], RABui_Bars[id].out ~= nil and RABui_Bars[id].out or "RAID", IsShiftKeyDown(), not IsControlKeyDown());
 end
 
 function RABui_BarDetail_SetBarData(id)

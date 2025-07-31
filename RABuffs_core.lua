@@ -209,10 +209,6 @@ function RAB_StartUp()
 
 	-- set new selfLimit and useOnClick values
 	for index, bar in ipairs(RABui_Bars) do
-		-- default useOnClick to true
-		if bar.useOnClick == nil then
-			bar.useOnClick = true;
-		end
 		-- default selfLimit to false
 		if not bar.selfLimit then
 			bar.selfLimit = false; -- default to false
@@ -267,7 +263,6 @@ function RAB_StartUp()
 	RABui_DefBars = nil;
 
 	RAB_Versions = type(RABui_Settings.keepversions) == "table" and RABui_Settings.keepversions or {};
-
 	return "remove"; -- unsubscribe event
 end
 
@@ -384,7 +379,7 @@ function RAB_GroupMember(userData, i)
 end
 
 -- GENERAL BUFF-QUERY CODELINE.
-function RAB_BuffCheckOutput(userData, outputTo, invert)
+function RAB_BuffCheckOutput(userData, outputTo, invert, outputToConsole)
 	-- Check query, output results (Called by the /rab handler (command UI), bar clicks (visual UI)).
 	local output = (userData.groups ~= "" and userData.groups ~= "12345678") and ("[G" .. userData.groups .. "] ") or "";
 	output = output .. (userData.classes ~= "" and strlen(userData.classes) < 8 and "[" .. userData.classes .. "] " or "");
@@ -403,6 +398,10 @@ function RAB_BuffCheckOutput(userData, outputTo, invert)
 	end
 	if (outputTo == "RAID" and not UnitInRaid("player")) then
 		outputTo = "PARTY";
+	end
+	if(outputToConsole)
+	then
+		outputTo = "CONSOLE";
 	end
 	output = sRAB_BuffOutputPrefix .. output;
 	RAB_SendMessage(output, outputTo, sRAB_BuffOutputPrefix);
