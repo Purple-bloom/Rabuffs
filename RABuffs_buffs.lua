@@ -133,6 +133,10 @@ RAB_Buffs = {
 		{ tooltip = "Flask of the Titans", texture = "INV_Potion_62", spellId=17626 },
 		{ tooltip = "Chromatic Resistance", texture = "INV_Potion_48", spellId=17629 }
 	}, grouping = "Miscellaneous" },
+	midsummersausage = { name = "Midsummer Sausage", identifiers = { { tooltip = "Midsummer Sausage", texture = "INV_Misc_Food_53", spellId = 29333 } }, grouping = "Miscellaneous", buffFunc = RAB_UseItem, itemId = 23326 },
+	toastedsmorc = { name = "Toasted Smorc", identifiers = { { tooltip = "Toasted Smorc", texture = "INV_SummerFest_Smorc", spellId = 29334 } }, grouping = "Miscellaneous", buffFunc = RAB_UseItem, itemId = 23211 },
+	elderberrypie = { name = "Elderberry Pie", identifiers = { { tooltip = "Elderberry Pie", texture = "INV_Misc_Food_10", spellId = 29335 } }, grouping = "Miscellaneous", buffFunc = RAB_UseItem, itemId = 23435 },
+	firetoastedbun = { name = "Fire-toasted Bun", identifiers = { { tooltip = "Fire-toasted Bun", texture = "INV_Misc_Food_11", spellId = 29332 } }, grouping = "Miscellaneous", buffFunc = RAB_UseItem, itemId = 23327 },
 
 	-- Protection potions --
 	lessernaturepot = { name = "Nature Protection Potion", identifiers = { { tooltip = "Nature Protection", texture = "Spell_Nature_SpiritArmor", spellId = 7254 } }, grouping = "Protection", buffFunc = RAB_UseItem, itemId = 6052 },
@@ -169,6 +173,10 @@ RAB_Buffs = {
 	restorativepotion = { name = "Restorative Potion", identifiers = { { tooltip = "Restoration", texture = "Spell_Holy_DispelMagic", spellId = 11359 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9030 },
 	invisibilitypotion = { name = "Invisibility Potion", identifiers = { { tooltip = "Invisibility", texture = "INV_Potion_18", spellId = 11392 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 9172 },
 	lesserinvisibilitypotion = { name = "Lesser Invisibility Potion", identifiers = { { tooltip = "Lesser Invisibility", texture = "INV_Potion_18", spellId = 3680 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 3823 },
+	freeactionpotion = { name = "Free Action Potion", identifiers = { { tooltip = "Free Action", texture = "INV_Potion_04", spellId = 6615 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 5634 },
+	livingactionpotion = { name = "Living Action Potion", identifiers = { { tooltip = "Living Free Action", texture = "INV_Potion_07", spellId = 24364 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 20008 },
+	swiftnesspotion = { name = "Swiftness Potion", identifiers = { { tooltip = "Speed", texture = "Ability_Kick", spellId = 2379 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 2459 },
+	elixirofthesages = { name = "Elixir of the Sages", identifiers = { { tooltip = "Elixir of the Sages", texture = "INV_Potion_29", spellId = 17535 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 13447 },
 
 	agilscroll = { name = "Scroll of Agility IV", identifiers = { { tooltip = "Agility", texture = "Spell_Holy_BlessingOfAgility", spellId = 12174 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 10309, useOn = 'player' },
 	protscroll = { name = "Scroll of Protection IV", identifiers = { { tooltip = "Armor", texture = "Ability_Warrior_DefensiveStance", spellId = 12175 } }, grouping = "HP/Mana/Utility", buffFunc = RAB_UseItem, itemId = 10305, useOn = 'player' },
@@ -283,14 +291,14 @@ RAB_Buffs = {
 	mushroomstr = { name = "Power Mushroom", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 24799 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51720 },
 	desertdumpling = { name = "Smoked Desert Dumpling", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 24799 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 20452 },
 	tenderwolf = { name = "Tender Wolf Steak", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 19710 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 18045 },
-	juicystripedmelonstam = { name = "Juicy Striped Melon (stam)", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 19710 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51712 },
+	juicystripedmelonstam = { name = "Juicy Watermelon", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 19710 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51712 },
 	gilneashotstew = { name = "Gilneas Hot Stew", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 45628 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 84041 },
 	sweetmountainberry = { name = "Sweet Mountain Berry", identifiers = { { tooltip = "Increased Agility", texture = "INV_Gauntlets_19", spellId = 18192 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51711 },
 	telabimmedley = { name = "Danonzo's Tel'Abim Medley", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 57046 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 60978 },
 	telabimdelight = { name = "Danonzo's Tel'Abim Delight", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 57044 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 60977 },
 	telabimsurprise = { name = "Danonzo's Tel'Abim Surprise", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food", spellId = 57042 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 60976 },
 	tuber = { name = "Runn Tum Tuber Surprise", identifiers = { { tooltip = "Increased Intellect", texture = "INV_Misc_Organ_03", spellId = 22730 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 18254 },
-	juicystripedmelonint = { name = "Juicy Striped Melon (int)", identifiers = { { tooltip = "Increased Intellect", texture = "INV_Misc_Organ_03", spellId = 22730 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51718 },
+	juicystripedmelonint = { name = "Sweet Watermelon", identifiers = { { tooltip = "Increased Intellect", texture = "INV_Misc_Organ_03", spellId = 22730 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 51718 },
 	squid = { name = "Grilled Squid", identifiers = { { tooltip = "Increased Agility", texture = "INV_Gauntlets_19", spellId = 18192 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 13928 },
 	dragonbreathchili = { name = "Dragonbreath Chili", identifiers = { { tooltip = "Dragonbreath Chili", texture = "Spell_Fire_Incinerate", spellId = 15852 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 12217 },
 	merlotblue = { name = "Medivh's Merlot Blue", identifiers = {
@@ -306,6 +314,7 @@ RAB_Buffs = {
 		{ tooltip = "Increased Stamina", texture = "INV_Drink_04", spellId = 57106 }, -- doesn't stack with merlot
 		{ tooltip = "Increased Intellect", texture = "INV_Drink_04", spellId = 57107 }, -- doesn't stack with merlot blue
 	}, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 21151 },
+	gordokgreengrog = { name = "Gordok Green Grog", identifiers = { { tooltip = "Gordok Green Grog", texture = "INV_Drink_03", spellId = 22789 } }, grouping = "Food/Drink", buffFunc = RAB_UseItem, itemId = 18269 },
 
 	wellfed = { name = "Well Fed", identifiers = { { tooltip = "Well Fed", texture = "Spell_Misc_Food" } }, grouping = "Food/Drink" },
 	anyfood = { name = "Any Food", identifiers = {
