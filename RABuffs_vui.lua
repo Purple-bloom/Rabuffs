@@ -582,7 +582,6 @@ function RABui_BarDetail_SetBarData(id)
 		RAB_BarDetail_Accept:SetText(sRAB_AddBarFrame_Add);
 		RAB_BarDetail_Remove:Hide();
 		RAB_BarDetail_Output = "RAID";
-		RAB_BarDetail_UseOnClick:SetChecked(true);
 		RAB_BarDetail_SelfLimit:SetChecked(false);
 	else
 		RAB_BarDetail_Header:SetText(sRAB_AddBarFrame_EditBar);
@@ -604,8 +603,6 @@ function RABui_BarDetail_SetBarData(id)
 		if buffData and buffData.type == 'selfbuffonly' or buffData.type == 'wepbuffonly' then
 			RAB_BarDetail_SelfLimit:Disable();
 		end
-
-		RAB_BarDetail_UseOnClick:SetChecked(RABui_Bars[id].useOnClick);
 
 		-- check for excludeNames not being nil or empty list
 		if (RABui_Bars[id].excludeNames ~= nil) then
@@ -1032,8 +1029,7 @@ function RABui_AddBar_Accept()
 				RAB_BarDetail_Label:GetText(),
 				11 - RAB_BarDetail_Priority:GetValue(),
 				RAB_BarDetail_Output,
-				RAB_BarDetail_PlayerExcludes:GetText(),
-				RAB_BarDetail_UseOnClick:GetChecked());
+				RAB_BarDetail_PlayerExcludes:GetText());
 	end
 end
 
@@ -1542,7 +1538,6 @@ function RABui_Localize()
 	RAB_BarDetail_PriorityLow:SetText(sRAB_Settings_BarDetail_PriorityLess);
 	RAB_BarDetail_PriorityHigh:SetText(sRAB_Settings_BarDetail_PriorityMore);
 	RAB_BarDetail_PlayerExcludesLabel:SetText(sRAB_Settings_BarDetail_PlayerExcludesLabel);
-	RAB_BarDetail_UseOnClickLabel:SetText(sRAB_Settings_BarDetail_UseOnClickLabel);
 	RAB_BarDetail_SelfLimitLabel:SetText(sRAB_Settings_BarDetail_SelfLimitLabel);
 
 	RABui_UpdateTitle();

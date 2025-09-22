@@ -1170,31 +1170,6 @@
                     </OnLeave>
                 </Scripts>
             </Slider>
-            <CheckButton name="RAB_BarDetail_UseOnClick" inherits="OptionsCheckButtonTemplate">
-                <Layers>
-                    <Layer level="OVERLAY">
-                        <FontString name="RAB_BarDetail_UseOnClickLabel" inherits="GameFontNormal" justifyH="LEFT">
-                            <Size>
-                                <AbsDimension x="220" y="16"/>
-                            </Size>
-                            <Anchors>
-                                <Anchor point="TOPLEFT" relativeTo="RAB_BarDetail_UseOnClick" relativePoint="TOPRIGHT">
-                                    <Offset>
-                                        <AbsDimension x="5" y="-8"/>
-                                    </Offset>
-                                </Anchor>
-                            </Anchors>
-                        </FontString>
-                    </Layer>
-                </Layers>
-                <Anchors>
-                    <Anchor point="TOPLEFT" relativeTo="RAB_BarDetail_Priority" relativePoint="BOTTOMLEFT">
-                        <Offset>
-                            <AbsDimension y="-10"/>
-                        </Offset>
-                    </Anchor>
-                </Anchors>
-            </CheckButton>
             <Button name="RAB_BarDetail_Accept" inherits="OptionsButtonTemplate">
                 <Size>
                     <AbsDimension x="75" y="22"/>
