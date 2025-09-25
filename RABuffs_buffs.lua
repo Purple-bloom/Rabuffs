@@ -234,6 +234,13 @@ RAB_Buffs = {
 		{ tooltip = "Juju Might", texture = "INV_Misc_MonsterScales_07", spellId = 16329 },
 		{ tooltip = "Juju Power", texture = "INV_Misc_MonsterScales_11", spellId = 16323 }
 	}, grouping = "Miscellaneous" },
+	AnyBL = { name = "Any Blasted Lands", identifiers = {
+		{ tooltip = "Rage of Ages", texture = "Spell_Nature_Strength", spellId = 10667 },
+		{ tooltip = "Spirit of Boar", texture = "Spell_Nature_Purge", spellId = 10668 },
+		{ tooltip = "Strike of the Scorpok", texture = "Spell_Nature_ForceOfNature", spellId = 10669 },
+		{ tooltip = "Spiritual Domination", texture = "Spell_Fire_Incinerate", spellId = 10693 },
+		{ tooltip = "Infallible Mind", texture = "Spell_Ice_Lament", spellId = 10692 }
+	}, grouping = "Miscellaneous" },
 	jujupower = { name = "Juju Power", identifiers = { { tooltip = "Juju Power", texture = "INV_Misc_MonsterScales_11", spellId = 16323 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 12451, useOn = 'player' },
 	jujumight = { name = "Juju Might", identifiers = { { tooltip = "Juju Might", texture = "INV_Misc_MonsterScales_07", spellId = 16329 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 12460, useOn = 'player' },
 	jujuchill = { name = "Juju Chill", identifiers = { { tooltip = "Juju Chill", texture = "INV_Misc_MonsterScales_09", spellId = 16325 } }, grouping = "Melee", buffFunc = RAB_UseItem, itemId = 12457, useOn = 'player' },
