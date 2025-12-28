@@ -194,6 +194,13 @@ RAB_Buffs = {
 		{ tooltip = "Greater Arcane Elixir", texture = "INV_Potion_25", spellId = 17539 },
 		{ tooltip = "Concoction of the Arcane Giant", texture = "inv_yellow_purple_elixir_2", spellId = 36931 }
 	}, buffFunc = RAB_UseItem, itemId = 13454, grouping = "Spell" },
+	anyGreaterPower = { name = "Any Greater Power", identifiers = {
+		{ tooltip = "Greater Firepower", texture = "INV_Potion_60", spellId = 26276 },
+		{ tooltip = "Greater Nature Power", texture = "Spell_Nature_SpiritArmor", spellId = 45988 },
+		{ tooltip = "Greater Arcane Power", texture = "Spell_Holy_FlashHeal", spellId = 56545 },
+		{ tooltip = "Greater Frost Power", texture = "INV_Potion_03", spellId = 56544 },
+		{ tooltip = "Shadow Power", texture = "INV_Potion_46", spellId = 11474 },
+	}, grouping = "Spell" },
 	greaterfirepower = { name = "Elixir of Greater Firepower", identifiers = { { tooltip = "Greater Firepower", texture = "INV_Potion_60", spellId = 26276 } }, buffFunc = RAB_UseItem, itemId = 21546, grouping = "Spell" },
 	greaternaturepower = { name = "Elixir of Greater Nature Power", identifiers = { { tooltip = "Greater Nature Power", texture = "Spell_Nature_SpiritArmor", spellId = 45988 } }, buffFunc = RAB_UseItem, itemId = 50237, grouping = "Spell" },
 	shadowpower = { name = "Elixir of Shadow Power", identifiers = { { tooltip = "Shadow Power", texture = "INV_Potion_46", spellId = 11474 } }, buffFunc = RAB_UseItem, itemId = 9264, grouping = "Spell" },
